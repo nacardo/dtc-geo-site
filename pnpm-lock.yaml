@@ -19,13 +19,22 @@ devDependencies:
   '@smui/data-table':
     specifier: 7.0.0-beta.15
     version: 7.0.0-beta.15(svelte@4.2.5)(typescript@5.2.2)
+  '@smui/drawer':
+    specifier: 7.0.0-beta.15
+    version: 7.0.0-beta.15(svelte@4.2.5)(typescript@5.2.2)
   '@smui/form-field':
+    specifier: 7.0.0-beta.15
+    version: 7.0.0-beta.15(svelte@4.2.5)(typescript@5.2.2)
+  '@smui/icon-button':
     specifier: 7.0.0-beta.15
     version: 7.0.0-beta.15(svelte@4.2.5)(typescript@5.2.2)
   '@smui/layout-grid':
     specifier: 7.0.0-beta.15
     version: 7.0.0-beta.15(svelte@4.2.5)(typescript@5.2.2)
   '@smui/linear-progress':
+    specifier: 7.0.0-beta.15
+    version: 7.0.0-beta.15(svelte@4.2.5)(typescript@5.2.2)
+  '@smui/list':
     specifier: 7.0.0-beta.15
     version: 7.0.0-beta.15(svelte@4.2.5)(typescript@5.2.2)
   '@smui/switch':
@@ -479,6 +488,23 @@ packages:
       tslib: 2.6.2
     dev: true
 
+  /@material/drawer@14.0.0:
+    resolution: {integrity: sha512-VPrxMIhbkXVbfH7aMFV+Um0tjOVrU/Y65X2hWsVdmjASadE8C5UYjIE3vjL1DM1M+zIa3qZZRUWqz0j1zqbr3w==}
+    dependencies:
+      '@material/animation': 14.0.0
+      '@material/base': 14.0.0
+      '@material/dom': 14.0.0
+      '@material/elevation': 14.0.0
+      '@material/feature-targeting': 14.0.0
+      '@material/list': 14.0.0
+      '@material/ripple': 14.0.0
+      '@material/rtl': 14.0.0
+      '@material/shape': 14.0.0
+      '@material/theme': 14.0.0
+      '@material/typography': 14.0.0
+      tslib: 2.6.2
+    dev: true
+
   /@material/elevation@14.0.0:
     resolution: {integrity: sha512-Di3tkxTpXwvf1GJUmaC8rd+zVh5dB2SWMBGagL4+kT8UmjSISif/OPRGuGnXs3QhF6nmEjkdC0ijdZLcYQkepw==}
     dependencies:
@@ -853,6 +879,18 @@ packages:
       '@smui/icon-button': 7.0.0-beta.15(svelte@4.2.5)(typescript@5.2.2)
       '@smui/ripple': 7.0.0-beta.15(svelte@4.2.5)(typescript@5.2.2)
       '@smui/select': 7.0.0-beta.15(svelte@4.2.5)(typescript@5.2.2)
+      svelte2tsx: 0.6.25(svelte@4.2.5)(typescript@5.2.2)
+    transitivePeerDependencies:
+      - svelte
+      - typescript
+    dev: true
+
+  /@smui/drawer@7.0.0-beta.15(svelte@4.2.5)(typescript@5.2.2):
+    resolution: {integrity: sha512-eEwTVDQliS0agZAelPi04W+KUIVP2uxTvnn9/kGPaIK++C25tWEf/9xhn6uboD1knPQJfZV6zx4ONco2zTVRng==}
+    dependencies:
+      '@material/dom': 14.0.0
+      '@material/drawer': 14.0.0
+      '@smui/common': 7.0.0-beta.15(svelte@4.2.5)(typescript@5.2.2)
       svelte2tsx: 0.6.25(svelte@4.2.5)(typescript@5.2.2)
     transitivePeerDependencies:
       - svelte
