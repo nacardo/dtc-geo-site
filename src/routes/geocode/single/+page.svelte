@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import type { PageData } from '../bulk/$types';
 	// import { data } from FormData;
 	import List, { Item, PrimaryText, SecondaryText, Separator, Text } from '@smui/list';
 	import TextField from '@smui/textfield';

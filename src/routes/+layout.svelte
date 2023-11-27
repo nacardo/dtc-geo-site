@@ -7,7 +7,8 @@
 	import IconButton from '@smui/icon-button';
 
 	let open = false;
-	let active = 'Inbox';
+	let active = 'IPH Data and Training Center';
+	// let tabTitle = active ? active : 'IPH Data and Training Center'
 
 	function setActive(value: string) {
 		active = value;
@@ -23,65 +24,61 @@
 		  It adds a style for absolute positioning. -->
 	<Drawer variant="modal" fixed={false} bind:open>
 		<Header>
-			<Title>Super Mail</Title>
-			<Subtitle>It's the best fake mail app drawer.</Subtitle>
+			<Title>DTC Tools</Title>
+			<Subtitle>Feel free to check them out!</Subtitle>
 		</Header>
 		<Content>
 			<List>
 				<Item
-					href="javascript:void(0)"
-					on:click={() => setActive('Inbox')}
-					activated={active === 'Inbox'}
+					href="/geocode/bulk"
+					on:click={() => setActive('Bulk Geocoder')}
+					activated={active === 'Bulk Geocoder'}
 				>
-					<!-- <Graphic class="material-icons" aria-hidden="true">inbox</Graphic> -->
-					<Text>Inbox</Text>
-				</Item>
-				<Item>
-					<Graphic class="material-icons" aria-hidden="true">pets</Graphic>
-					<Text>Star</Text>
+					<Graphic class="material-icons" aria-hidden="true">my_location</Graphic>
+					<Text>Bulk Geocoder</Text>
 				</Item>
 				<Item
-					href="javascript:void(0)"
-					on:click={() => setActive('Sent Mail')}
-					activated={active === 'Sent Mail'}
+					href="/geocode/single"
+					on:click={() => setActive('Single Address Geocoder')}
+					activated={active === 'Single Address Geocoder'}
 				>
-					<Graphic class="material-icons" aria-hidden="true">send</Graphic>
-					<Text>Sent Mail</Text>
+					<Graphic class="material-icons" aria-hidden="true">location_on</Graphic>
+					<Text>Single Address Geocoder</Text>
 				</Item>
 				<Item
-					href="javascript:void(0)"
-					on:click={() => setActive('Drafts')}
-					activated={active === 'Drafts'}
+					href="/addresses/clean"
+					on:click={() => setActive('Address Cleaner')}
+					activated={active === 'Address Cleaner'}
 				>
-					<Graphic class="material-icons" aria-hidden="true">drafts</Graphic>
-					<Text>Drafts</Text>
+					<Graphic class="material-icons" aria-hidden="true">cleaning_services</Graphic>
+					<Text>Address Cleaner</Text>
 				</Item>
 
 				<Separator />
-				<Subheader tag="h6">Labels</Subheader>
+				<Subheader tag="h6">Our Projects</Subheader>
 				<Item
 					href="javascript:void(0)"
-					on:click={() => setActive('Family')}
-					activated={active === 'Family'}
+					on:click={() => setActive('STI Platform')}
+					activated={active === 'STI Platform'}
 				>
-					<Graphic class="material-icons" aria-hidden="true">bookmark</Graphic>
-					<Text>Family</Text>
+					<Graphic class="material-icons" aria-hidden="true">chevron_right</Graphic>
+					<Text>STI Platform</Text>
 				</Item>
 				<Item
 					href="javascript:void(0)"
-					on:click={() => setActive('Friends')}
-					activated={active === 'Friends'}
+					on:click={() => setActive('LOV')}
+					activated={active === 'LOV'}
 				>
-					<Graphic class="material-icons" aria-hidden="true">bookmark</Graphic>
-					<Text>Friends</Text>
+					<Graphic class="material-icons" aria-hidden="true">chevron_right</Graphic>
+					<Text>LOV</Text>
 				</Item>
 				<Item
 					href="javascript:void(0)"
-					on:click={() => setActive('Work')}
-					activated={active === 'Work'}
+					on:click={() => setActive('HVIP')}
+					activated={active === 'HVIP'}
 				>
-					<Graphic class="material-icons" aria-hidden="true">bookmark</Graphic>
-					<Text>Work</Text>
+					<Graphic class="material-icons" aria-hidden="true">chevron_right</Graphic>
+					<Text>HVIP</Text>
 				</Item>
 			</List>
 		</Content>
@@ -100,9 +97,10 @@
 					<Row>
 						<Section>
 							<IconButton class="material-icons" on:click={() => (open = !open)}>menu</IconButton>
-							<TABtitle>DTC Geocoder</TABtitle>
+							<TABtitle>{active}</TABtitle>
 						</Section>
 						<Section align="end" toolbar>
+							<IconButton href="/" class="material-icons">home</IconButton>
 							<IconButton class="material-icons">file_download</IconButton>
 						</Section>
 					</Row>
@@ -110,13 +108,10 @@
 
 				<slot />
 				<!-- <footer>
-			<p>Copyright 2023</p>
-		</footer> -->
+				<p>Copyright 2023</p>
+				</footer> -->
 			</div>
-			<br />
-			<pre class="status">Active: {active}</pre>
-			<div style="height: 90vh;">&nbsp;</div>
-			And some stuff at the bottom.
+			<!-- <div style="height: 90vh;">&nbsp;</div> -->
 		</main>
 	</AppContent>
 </div>
