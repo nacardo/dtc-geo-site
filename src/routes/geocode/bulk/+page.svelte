@@ -35,22 +35,17 @@
 			if (files) {
 				const dataArray = new FormData();
 				dataArray.append('data_file', files[0]);
-				await fetch('http://127.0.0.1:8000/geocode/file', {
+				const res = await fetch('http://127.0.0.1:8000/geocode/file', {
 					method: 'POST',
 					body: dataArray
-				})
-					.then((res) => {
-						geoFileName = res.headers.get('content-name');
-						return res.blob();
-					})
-					.then((blob) => {
-						blobURL = URL.createObjectURL(blob);
-					})
-					.catch((error) => {
-						console.log('hit a snag');
-						errorMsg = error;
-						throw new Error('Request failed.', error);
-					});
+				});
+				if (!res.ok) {
+					errorMsg = await res.json();
+					throw new Error(errorMsg.detail);
+				}
+				geoFileName = res.headers.get('content-name');
+				const blob = await res.blob();
+				blobURL = URL.createObjectURL(blob);
 			} else {
 				throw new Error('No files selected');
 			}
@@ -64,6 +59,7 @@
 		event.preventDefault();
 		file_uploaded = true;
 		is_loading = true;
+		errorMsg = null;
 		await geocodeFile(files);
 		is_loading = false;
 		res_received = true;
@@ -74,18 +70,8 @@
 <div style={'margin-top:20px'}>
 	<form on:submit|preventDefault={handleFormSubmit}>
 		<input class="file-input" bind:files type="file" />
-		<!-- <button type="submit">Geocode File</button> -->
 		<Button variant="raised" type="submit">Geocode File</Button>
 	</form>
-	<!-- <form method="POST" action="http://127.0.0.1:8000/geocode/address" enctype="application/json">
-		<input type="text" name="street" />
-		<input type="text" name="city" />
-		<input type="text" name="postal_code" />
-		<input type="text" name="state" />
-		<button type="submit">Geowhat?</button>
-	</form> -->
-
-	<!-- <pre class="status">Focused: {focused}, Value: {street}</pre> -->
 </div>
 <div style="margin-top: 20px;">
 	{#if !file_uploaded}
@@ -94,10 +80,9 @@
 		<p>Geocoding...</p>
 		<LinearProgress indeterminate />
 	{:else if blobURL && !errorMsg}
-		<!-- <p>{JSON.stringify(geo_res)}</p> -->
 		<a href={blobURL} download={geoFileName}>Download Geocoded File</a>
 	{:else if errorMsg}
-		<p>{errorMsg}</p>
+		<p style="color:red;">{errorMsg.detail}</p>
 		<!-- 
 		{#await geo_res}
 			<p>Geocoding...</p>
